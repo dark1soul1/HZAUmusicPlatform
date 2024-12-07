@@ -75,7 +75,12 @@ export async function getMV(id) {
   return request('GET', `/mv/${id}`);
 }
 
-//模糊搜索
-export async function getMessage(){
-  return request('get','');
+//模糊搜索音乐
+export async function getMusicMessage(data){
+  return request('GET','/music/search',data);
+}
+
+//模糊搜索MV
+export async function getMVMessage(data){
+  return request('GET','/mv/search',data)
 }

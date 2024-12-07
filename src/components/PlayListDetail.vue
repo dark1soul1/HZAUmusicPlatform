@@ -9,7 +9,7 @@
       <el-table-column prop="album" label="专辑"></el-table-column>
       <el-table-column label="操作" width="250">
         <template #default="scope">
-          <el-button type="text" @click="viewSongDetail(scope.row)">查看</el-button>
+          <el-button type="text" @click="router.push(`/song/${scope.row.id}`)">查看</el-button>
           <el-button type="text" @click="deleteSongFromPlaylist(scope.row)" class="ml-2">删除</el-button>
         </template>
       </el-table-column>
@@ -21,20 +21,20 @@ import { ref, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useUserStore } from '../store';
 import { ElMessage, ElMessageBox } from 'element-plus';
-import { getPlaylists, deletePlaylistMusic } from '../api/index';
+import { deletePlaylistMusic, getPlaylistMusic } from '../api/index';
 
 const userStore = useUserStore();
 const route = useRoute();
 const router = useRouter();
 const playlist = ref({ name: '', songs: [] });
 
-const fetchPlaylistDetail = async (playlistId) => {
+const fetchPlaylistDetail = async () => {
   const data = {
-    listId: playlistId,
+    listId: userStore.playlistId,
     userId: userStore.id
   };
   try {
-    const response = await getPlaylists(data);
+    const response = await getPlaylistMusic(data);
     playlist.songs = response.data.data;
     console.log(playlist);
   } 
@@ -45,7 +45,7 @@ const fetchPlaylistDetail = async (playlistId) => {
 
 onMounted(async () => {
     if(userStore.playlistId){
-        await fetchPlaylistDetail(userStore.playlistId);
+        await fetchPlaylistDetail();
     }
 });
 
@@ -75,10 +75,6 @@ const deleteSongFromPlaylist = async (song) => {
   }).catch(() => {
     ElMessage.info('已取消删除');
   });
-};
-
-const viewSongDetail = (song) => {
-  console.log('查看歌曲详情:', song);
 };
 </script>
 
