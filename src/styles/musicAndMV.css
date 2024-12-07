@@ -1,0 +1,168 @@
+.MV,.music{
+  position: relative;
+}
+.inner {
+  width: 1200px;
+  position: relative;
+  margin: 0 auto;
+  overflow: hidden;
+  z-index: 5;
+}
+/* 轮播 */
+.slide_action,.slide_action_both {
+  position: absolute;
+  top: 0;
+  height: 100%;
+}
+.slide_action {
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+}
+.slide_action_both {
+  width: 50%;
+}
+.slide_action_left,.slide_action_btn_left {
+  left: 0;
+}
+.slide_action_right,.slide_action_btn_right {
+  right: 0;
+}
+.slide_action_btn {
+  position: absolute;
+  top: 50%;
+  margin-top: -54px;
+  width: 79px;
+  height: 108px;
+  background-color: rgba(0, 0, 0, .05);
+  transition-property: opacity,transform;
+  transition-duration:.5s;
+}
+.slide_action_btn_left {
+  transform: translateX(-100%);
+}
+
+.slide_action_btn_right {
+  transform: translateX(100%);
+}
+.slide_action_arrow {
+  position: absolute;
+  top: 50%;
+  margin-top: -20px;
+  width: 20px;
+  height: 39px;
+}
+.slide_act_arr_left {
+  left: 29px;
+  background-position: -20px -120px;
+}
+.slide_act_arr_right {
+  right: 29px;
+  background-position: 0 -120px;
+}
+.MV:hover .slide_action_btn_hot,
+.music:hover .slide_action_btn_hot {
+  transform: translateX(0);
+}
+
+.bg {
+  background: url(https://y.qq.com/ryqq/static/media/bg_detail.bb32b2d1.jpg?max_age=2592000) 50% 0 repeat-x;
+}
+.bg .inner{
+  overflow: hidden;
+}
+.title {
+  padding-top: 4.1666667%;
+  padding-bottom: 2%;
+  margin-left: -20px;
+  width: 196px;
+  margin:0 568px;
+}
+.sortTab{
+  height: 50px;
+  text-align: center;
+  font-size: 0;
+}
+.sortTab_item{
+  position: relative;
+  display: inline-block;
+  font-size: 15px;
+  margin: 0 24px;
+  z-index: 7;
+}
+.pushList {
+  overflow: hidden;
+  padding-bottom: 84px;
+}
+
+
+/* 序号点 */
+.switch{
+  position: absolute;
+  bottom: 0;
+  left: 50.75%;
+  transform: translateX(-50%);
+}
+.switch a{
+  float:left;
+  width: 8px;
+  height: 8px;
+  background-color: #0000004D;
+  margin: 0 20px 30px 0;
+  opacity: 0.5;
+  border-radius: 12px;
+}
+.switch a:active{
+  background-color: #000;
+}
+
+.cover_mask {
+  height: 224px;
+  width: 224px;
+}
+
+/* 播放图标 */
+/* .cover_icon {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: -35px;
+  width: 70px;
+  height: 70px;
+  opacity: 0;
+  background-image: url("../assets/cover_play@2x\(1\).png");
+  transform: scale(.7) translateZ(0);
+  transition-property: opacity,transform;
+  transition-duration: 0.6s;
+}
+.be_cover:hover .cover_icon {
+  opacity: 1;
+  transform: scaleZ(1.2);
+}
+.be_cover:hover .be_cover_img {
+  filter: brightness(75%);
+  transform: scale(1.1);
+  transition-duration: 0.8s;
+} */
+.cover_icon {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(0.7);
+  width: 70px;
+  height: 70px;
+  opacity: 0;
+  background-image: url("../assets/cover_icon.png");
+  transition: opacity 0.6s, transform 0.6s;
+}
+
+.be_cover:hover .cover_icon {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.2);
+}
+
+.be_cover:hover .be_cover_img {
+  filter: brightness(75%);
+  transform: scale(1.1);
+  transition-duration: 0.8s;
+}

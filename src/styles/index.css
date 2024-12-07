@@ -1,0 +1,39 @@
+/* 处理el-dialog引发的内联样式问题 */
+body {
+  width: 100% !important;
+}
+
+a:focus {
+  border: 0;
+}
+a:hover,.firword {
+  color: #31c27c;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.inner {
+    max-width:1200px;
+    position: relative;
+    margin: 0 auto;
+    z-index: 5;
+}
+
+
+.btn {
+    display: block;
+    line-height: 38px;
+    padding: 0 15px 0 10px;
+    text-align: center;
+    white-space: nowrap;
+    border: 1px solid #c9c9c9;
+    border-radius: 3px;
+}
+.btn_green,.choose_green:hover{
+    background-color: #31c27c;
+    color: #fff;
+    border-color: #31c27c;
+}
+.btn_green:hover {
+    color: #fff;
+}
