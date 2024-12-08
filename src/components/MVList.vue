@@ -86,7 +86,7 @@ const carousel = createCarousel({
   }
 });
 
-const itemWidth = 265;
+const itemWidth = 0;
 
 watch(displayedMVs, () => {
   nextTick(() => {
@@ -174,7 +174,7 @@ onMounted(async () => {
     await fetchMVs();
     setA();
   } catch (error) {
-    console.error('Failed to fetch categories:', error);
+    console.error('查询分类失败:', error);
   }
 });
 </script>

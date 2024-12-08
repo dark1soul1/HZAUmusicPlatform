@@ -13,20 +13,22 @@
     </audio>
     <button @click="goHome" class="exit-button">退出</button>
     <button v-show="userStore.isAllow" @click="showPlaylists" class="add-to-playlist-button">加入歌单</button>
-    <div v-if="showPlaylistModal" class="playlist-modal">
-      <h3>选择歌单</h3>
-      <ul>
-        <li
-          v-for="(playlist, index) in playlists"
-          :key="index"
-          @click="selectPlaylist(playlist)"
-          :class="{ 'selected-playlist': selectedPlaylist && selectedPlaylist.id === playlist.id }"
-        >
-          {{ playlist.name }}
-        </li>
-      </ul>
-      <button @click="addToSelectedPlaylist">确认加入</button>
-      <button @click="closePlaylistModal">取消</button>
+    <div v-if="showPlaylistModal" class="modal-overlay">
+      <div class="playlist-modal">
+        <h3>选择歌单</h3>
+        <ul>
+          <li
+            v-for="(playlist, index) in playlists"
+            :key="index"
+            @click="selectPlaylist(playlist)"
+            :class="{ 'selected-playlist': selectedPlaylist && selectedPlaylist.id === playlist.id }"
+          >
+            {{ playlist.name }}
+          </li>
+        </ul>
+        <button @click="addToSelectedPlaylist" class="confirm-button">确认加入</button>
+        <button @click="closePlaylistModal" class="cancel-button">取消</button>
+      </div>
     </div>
     <el-button @click="toggleLyric" class="toggle-lyric">切换歌词显示</el-button>
     <pre v-if="showLyric" class="lyric">{{ musicInfo.lyric }}</pre>
@@ -136,6 +138,7 @@ const addToSelectedPlaylist = async () => {
 </script>
 
 <style scoped>
+@import '../styles/songPlayStyle.css';
 .music-player {
   display: flex;
   flex-direction: column;
