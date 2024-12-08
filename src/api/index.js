@@ -36,8 +36,8 @@ export async function deletePlaylist(data) {
 }
 
 // 歌单查询(查询音乐)
-export async function getPlaylistMusic() {
-  return request('GET', `/playlist/music`);
+export async function getPlaylistMusic(data) {
+  return request('GET', `/playlist/music`,data);
 }
 
 // 歌单更新(增加音乐)

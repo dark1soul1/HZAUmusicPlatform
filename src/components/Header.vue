@@ -12,9 +12,13 @@
         <ul v-show="userStore.isMusicWorld" class="subn">
             <li class="subn_item"><a class="subn_link firword">首页</a></li>
         </ul>
-        <div class="top_search">
+        <!-- <el-radio-group v-model="radio1" class="top_search_btn" size="large">
+          <el-radio-button label="music" value="music" />
+          <el-radio-button label="MV" value="MV" />
+        </el-radio-group> -->
+        <div class="top_search"> 
             <div class="top_search_input">
-                <input type="text" class="input_input" placeholder="音乐">
+                <input type="text" class="input_input" placeholder="音乐/MV/歌单/歌手">
                 <button class="top_search_button">
                     <img src="../assets/searchIcon.jpg" class="icon_picture" alt="">
                 </button>
@@ -50,6 +54,7 @@ watch(() => userStore.isMusicWorld, (newValue) => {
     { label: '我的音乐', isActive: !newValue, action: () => userStore.switchToMymusic() }
   ];
 });
+const radio1 = ref('music')
 </script>
 
 <style scoped>
@@ -113,6 +118,11 @@ watch(() => userStore.isMusicWorld, (newValue) => {
 }
 .subn_link {
   display: block;
+}
+.top_search_btn{
+  position: absolute;
+  top: 25px;
+  right:524px;
 }
 .top_search {
   position: absolute;

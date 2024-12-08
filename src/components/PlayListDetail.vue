@@ -3,10 +3,9 @@
     <header class="playlist-header">
       <h1>{{ playlist.name }}</h1>
     </header>
-    <el-table :data="playlist.songs" style="width: 100%" row-key="id">
+    <el-table :data="playlist" style="width: 100%" row-key="id">
       <el-table-column prop="name" label="歌曲名称"></el-table-column>
       <el-table-column prop="artist" label="歌手"></el-table-column>
-      <el-table-column prop="album" label="专辑"></el-table-column>
       <el-table-column label="操作" width="250">
         <template #default="scope">
           <el-button type="text" @click="router.push(`/song/${scope.row.id}`)">查看</el-button>
@@ -26,16 +25,17 @@ import { deletePlaylistMusic, getPlaylistMusic } from '../api/index';
 const userStore = useUserStore();
 const route = useRoute();
 const router = useRouter();
-const playlist = ref({ name: '', songs: [] });
+const playlist = ref([]);
 
 const fetchPlaylistDetail = async () => {
   const data = {
     listId: userStore.playlistId,
     userId: userStore.id
   };
+  console.log(data);
   try {
     const response = await getPlaylistMusic(data);
-    playlist.songs = response.data.data;
+    playlist.value = response.data.data;
     console.log(playlist);
   } 
   catch (error) {
@@ -44,14 +44,14 @@ const fetchPlaylistDetail = async () => {
 };
 
 onMounted(async () => {
-    if(userStore.playlistId){
+    if(userStore.playlistId!==null&&userStore.id!==null){
         await fetchPlaylistDetail();
     }
 });
 
 const deleteSongFromPlaylist = async (song) => {
   ElMessageBox.confirm(
-    `确定要从歌单 "${playlist.value.name}" 中删除歌曲 "${song.name}" 吗？`,
+    `确定要从歌单中删除歌曲 "${song.name}" 吗？`,
     '警告',
     {
       confirmButtonText: '确定',
@@ -59,16 +59,16 @@ const deleteSongFromPlaylist = async (song) => {
       type: 'warning'
     }
   ).then(async () => {
+    const data={
+      playlistId: userStore.playlistId,
+      musicId: song.id,
+      userId: userStore.id
+    }
+    console.log(data);
     try {
-      await deletePlaylistMusic({
-        playlistId: playlist.value.id,
-        musicId: song.id
-      });
+      await deletePlaylistMusic(data);
       ElMessage.success('删除成功');
-      const index = playlist.value.songs.findIndex(s => s.id === song.id);
-      if (index > -1) {
-        playlist.value.songs.splice(index, 1);
-      }
+      playlist.value = playlist.value.filter(s => s.id !== song.id);
     } catch (error) {
       ElMessage.error('删除歌曲失败');
     }

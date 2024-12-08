@@ -38,14 +38,14 @@ export const useUserStore=defineStore('user',{
             this.currentView='combination'
         },
         switchToMymusic(){
-            /* this.isMusicWorld=false
+            this.isMusicWorld=false
             if(this.isAllow===true){
                 this.currentView='mymusic'
             }
             else{
                 this.currentView='login'
-            } */
-            this.currentView='mymusic'
+            }
+            /* this.currentView='mymusic' */
         },
         switchToRegister(){
             this.isLoggedIn=false,

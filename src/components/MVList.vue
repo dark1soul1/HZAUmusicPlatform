@@ -183,6 +183,7 @@ onMounted(async () => {
 @import '../styles/musicAndMV.css';
 .pushList {
   overflow: hidden;
+  min-height:224px;
   padding-bottom: 84px;
 }
 .list_slide {
