@@ -18,7 +18,7 @@
         </el-radio-group> -->
         <div class="top_search"> 
             <div class="top_search_input">
-                <input type="text" class="input_input" placeholder="音乐/MV/歌单/歌手">
+                <input type="text" class="input_input" placeholder="音乐/MV">
                 <button class="top_search_button">
                     <img src="../assets/searchIcon.jpg" class="icon_picture" alt="">
                 </button>

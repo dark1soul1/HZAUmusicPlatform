@@ -350,4 +350,20 @@ strong{
   background-color: #d1ecff;
   font-weight: bold;
 }
+
+/* audio样式修改 */
+
+/* 进度条 */
+audio::-webkit-media-controls-progress-bar {
+  height: 6px;
+  background-color: #ffffff;
+}
+/* 已播放进度 */
+audio::-webkit-media-controls-played-bar {
+  background-color: #0000ff;
+}
+/* 剩余时间 */
+audio::-webkit-media-controls-time-remaining-display {
+  color: #1d0101;
+}
 </style>

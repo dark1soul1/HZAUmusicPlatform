@@ -5,7 +5,9 @@
     </header>
     <el-table :data="playlist" style="width: 100%" row-key="id">
       <el-table-column prop="name" label="歌曲名称"></el-table-column>
-      <!-- <el-table-column prop="artist" label="歌手"></el-table-column> -->
+      <el-table-column prop="singer" label="歌手"></el-table-column>
+      <el-table-column prop="writeMusic" label="编曲"></el-table-column>
+      <el-table-column prop="wording" label="作词"></el-table-column>
       <el-table-column label="操作" width="250">
         <template #default="scope">
           <el-button type="text" @click="router.push(`/song/${scope.row.id}`)">查看</el-button>
