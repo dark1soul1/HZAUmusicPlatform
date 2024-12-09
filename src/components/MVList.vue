@@ -41,12 +41,12 @@
     <div class="slide_action">
         <div class="slide_action_both slide_action_left">
           <a href="#" class="slide_action_btn slide_action_btn_hot slide_action_btn_left" id="hot_btn_left" @click.prevent="arrowAction('left')">
-            <img src="../assets/leftOne.png" alt="" class="slide_action_arrow slide_act_arr_left">
+            <img src="../assets/rightOne.png" alt="" class="slide_action_arrow slide_act_arr_left">
           </a>
         </div>
         <div class="slide_action_both slide_action_right">
           <a href="#" class="slide_action_btn slide_action_btn_hot slide_action_btn_right" id="hot_btn_right" @click.prevent="arrowAction('right')">
-            <img src="../assets/rightOne.png" alt="" class="slide_action_arrow slide_act_arr_right">
+            <img src="../assets/leftOne.png" alt="" class="slide_action_arrow slide_act_arr_right">
           </a>
         </div>
       </div>

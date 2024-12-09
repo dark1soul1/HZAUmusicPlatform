@@ -6,7 +6,7 @@
         </div>
         <div class="nav-bar">
           <el-menu class="el-menu-demo" mode="horizontal">
-            <el-menu-item index="1" @click="userStore.switchToMyPlayLists();$router.push(`/mv/${MV.id}`);" class="el-menu-fir">我的歌单</el-menu-item>
+            <el-menu-item index="1" @click="userStore.switchToMyPlayLists();" class="el-menu-fir">我的歌单</el-menu-item>
             <el-menu-item index="2" @click="userStore.switchToProfileCenter()">个人中心</el-menu-item>
           </el-menu>
         </div>

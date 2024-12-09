@@ -7,7 +7,7 @@
 
     <el-table :data="playlists" style="width: 100%" row-key="id">
       <el-table-column prop="name" label="歌单名称"></el-table-column>
-      <el-table-column prop="songCount" label="歌曲数量" width="100"></el-table-column>
+      <!-- <el-table-column prop="songCount" label="歌曲数量" width="100"></el-table-column> -->
       <el-table-column label="操作" width="250">
         <template #default="scope">
           <el-button type="text" @click="userStore.switchToPlayListDetail(scope.row.id)">查看</el-button>

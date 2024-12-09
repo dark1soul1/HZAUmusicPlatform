@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useUserStore } from '../store';
 
 const userStore=useUserStore();
-const BASE_URL='http://192.168.111.250:8080';
+const BASE_URL='http://101.37.117.57:8080';
 
 const instance=axios.create({
     baseURL:BASE_URL,
@@ -13,7 +13,7 @@ instance.interceptors.request.use(
     config=>{
         console.log(userStore.token);
         if(userStore.token){
-            config.headers.Authorization=`${userStore.token}`;
+            config.headers.Authorization=`Bearer ${userStore.token}`;
             /* config.headers.token=`Bearer ${userStore.token}`; */
         }
         console.log('Request Headers:', config.headers);
