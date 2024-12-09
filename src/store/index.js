@@ -10,6 +10,7 @@ export const useUserStore=defineStore('user',{
             currentCategory:'',
             currentCategoryIndex:0,
             playlistId:'',
+            searchString:'',
             id:'',
             name:'游客',
             password:'',

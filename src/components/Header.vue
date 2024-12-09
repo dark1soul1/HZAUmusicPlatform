@@ -12,14 +12,15 @@
         <ul v-show="userStore.isMusicWorld" class="subn">
             <li class="subn_item"><a class="subn_link firword">首页</a></li>
         </ul>
-        <!-- <el-radio-group v-model="radio1" class="top_search_btn" size="large">
-          <el-radio-button label="music" value="music" />
-          <el-radio-button label="MV" value="MV" />
-        </el-radio-group> -->
         <div class="top_search"> 
             <div class="top_search_input">
-                <input type="text" class="input_input" placeholder="音乐/MV">
-                <button class="top_search_button">
+                <input 
+                type="text" 
+                class="input_input" 
+                v-model="searchQuery" 
+                @keyup.enter="performSearch" 
+                placeholder="音乐/MV">
+                <button class="top_search_button" @click="performSearch">
                     <img src="../assets/searchIcon.jpg" class="icon_picture" alt="">
                 </button>
             </div>
@@ -41,7 +42,9 @@
 <script setup>
 import { ref,watch } from 'vue';
 import { useUserStore } from '../store';
+import { ElMessage } from 'element-plus';
 
+const searchQuery = ref('');
 const userStore=useUserStore()
 const items = ref([
   { label: '音乐世界', isActive: userStore.isMusicWorld, action: () => userStore.switchToCombination() },
@@ -54,7 +57,28 @@ watch(() => userStore.isMusicWorld, (newValue) => {
     { label: '我的音乐', isActive: !newValue, action: () => userStore.switchToMymusic() }
   ];
 });
-const radio1 = ref('music')
+
+const performSearch=()=>{
+  let trimmedQuery = searchQuery.value.trim();
+  if (!trimmedQuery) {
+    ElMessage.warning('搜索内容不能为空');
+    return;
+  }
+  const minLength = 2;
+  if (trimmedQuery.length < minLength) {
+    ElMessage.warning(`搜索内容至少需要 ${minLength} 个字符`);
+    return;
+  }
+  const allowedPattern = /^[a-zA-Z0-9\u4e00-\u9fa5]+$/;
+  if (!allowedPattern.test(trimmedQuery)) {
+    ElMessage.warning('仅允许字母、数字和中文字符');
+    return;
+  }
+  searchQuery.value=trimmedQuery;
+  console.log(searchQuery.value);
+  userStore.searchString=searchQuery.value;
+  ElMessage('正在搜索:', trimmedQuery);
+};
 </script>
 
 <style scoped>
