@@ -20,6 +20,7 @@ import Combination from '../components/Combination.vue';
 import LoginModal from '../components/LoginModal.vue';
 import RegisterModal from '../components/RegisterModal.vue';
 import PlayListDetail from '../components/PlayListDetail.vue';
+import SearchDetails from '../components/searchDetails.vue';
 
 const scrollToTop = () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -35,7 +36,9 @@ const currentComponent=computed(()=>{
     case 'mymusic':
       return MyMusic
     case 'playlistdetail':
-      return PlayListDetail;
+      return PlayListDetail
+    case 'searchdetails':
+      return SearchDetails
     default:
       return Combination
   }

@@ -14,8 +14,7 @@
         </ul>
         <div class="top_search"> 
             <div class="top_search_input">
-                <input 
-                type="text" 
+                <input  
                 class="input_input" 
                 v-model="searchQuery" 
                 @keyup.enter="performSearch" 
@@ -76,8 +75,8 @@ const performSearch=()=>{
   }
   searchQuery.value=trimmedQuery;
   console.log(searchQuery.value);
-  userStore.searchString=searchQuery.value;
-  ElMessage('正在搜索:', trimmedQuery);
+  userStore.switchToSearchDetails();
+  ElMessage('正在搜索:'+trimmedQuery);
 };
 </script>
 

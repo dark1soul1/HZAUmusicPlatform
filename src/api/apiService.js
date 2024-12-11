@@ -11,12 +11,12 @@ const instance=axios.create({
 
 instance.interceptors.request.use(
     config=>{
-        console.log(userStore.token);
+        /* console.log(userStore.token); */
         if(userStore.token){
             config.headers.Authorization=`Bearer ${userStore.token}`;
             /* config.headers.token=`Bearer ${userStore.token}`; */
         }
-        console.log('Request Headers:', config.headers);
+        /* console.log('Request Headers:', config.headers); */
         config.headers['Content-Type']='application/json';
         return config;
     },

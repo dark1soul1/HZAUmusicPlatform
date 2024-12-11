@@ -52,8 +52,9 @@ export const useUserStore=defineStore('user',{
             this.isLoggedIn=false,
             this.isRegister=true
         },
-        editProfile(){
-            this.currentView='editProfile'
+        switchToSearchDetails(value){
+            this.searchString=value,
+            this.currentView='searchdetails'
         },
         switchToProfileCenter(){
             this.mmCurrentView='profilecenter'
