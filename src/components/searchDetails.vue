@@ -53,10 +53,12 @@ const mvList=ref([]);
 async function fetchMessage(){
     let searchString=userStore.searchString;
     try{
-        const musicMessage=await getMusicMessage({searchString});
-        const MVMessage=await getMVMessage({searchString});
+        console.log(searchString);
+        const musicMessage=await getMusicMessage({name:searchString});
+        const MVMessage=await getMVMessage({name:searchString});
         musicList.value=musicMessage.data.data;
         mvList.value=MVMessage.data.data;
+        console.log(musicList.value+"//"+mvList.value);
     }
     catch(error){
         ElMessage.warning("搜索失败，请稍后再试："+error);

@@ -74,8 +74,7 @@ const performSearch=()=>{
     return;
   }
   searchQuery.value=trimmedQuery;
-  console.log(searchQuery.value);
-  userStore.switchToSearchDetails();
+  userStore.switchToSearchDetails(searchQuery);
   ElMessage('正在搜索:'+trimmedQuery);
 };
 </script>
