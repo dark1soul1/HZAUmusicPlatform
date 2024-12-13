@@ -38,7 +38,7 @@
     </div>
 </template>
 <script setup>
-import { onMounted, ref } from 'vue';
+import { onMounted, ref,watch,computed } from 'vue';
 import { useUserStore } from '../store';
 import { useRouter } from 'vue-router';
 import { getMusicMessage,getMVMessage } from '../api';
@@ -49,24 +49,31 @@ const router=useRouter();
 const isMusicList=ref(true);
 const musicList=ref([]);
 const mvList=ref([]);
+let searchString=computed(()=>userStore.searchString);
 
 async function fetchMessage(){
-    let searchString=userStore.searchString;
     try{
-        console.log(searchString);
-        const musicMessage=await getMusicMessage({name:searchString});
-        const MVMessage=await getMVMessage({name:searchString});
+        /* console.log("searchString:"+searchString.value); */
+        const musicMessage=await getMusicMessage({name:searchString.value});
+        const MVMessage=await getMVMessage({name:searchString.value});
         musicList.value=musicMessage.data.data;
         mvList.value=MVMessage.data.data;
-        console.log(musicList.value+"//"+mvList.value);
     }
     catch(error){
         ElMessage.warning("搜索失败，请稍后再试："+error);
     }
 }
 
+watch(searchString,async()=>{
+  const allowedPattern = /^[a-zA-Z0-9\u4e00-\u9fa5]+$/;
+  console.log("watchSeachString:"+searchString.value);
+  if(searchString.value&&searchString.value.length>=2&&allowedPattern.test(searchString.value)){
+    await fetchMessage();
+  }
+})
+
 onMounted(async()=>{
-     await fetchMessage();
+    await fetchMessage();
 })
 </script>
 

@@ -74,6 +74,7 @@ const performSearch=()=>{
     return;
   }
   searchQuery.value=trimmedQuery;
+  /* console.log("searchQuery:"+searchQuery.value); */
   userStore.switchToSearchDetails(searchQuery);
   ElMessage('正在搜索:'+trimmedQuery);
 };
